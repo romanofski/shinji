@@ -1,0 +1,21 @@
+---
+- name: install DDNS packages
+  package:
+    name: "{{ item }}"
+  with_items:
+    - luci-app-ddns
+    - ddns-scripts
+
+- name: configure DDNS
+  template:
+    src: ddns.j2
+    dest: /etc/config/ddns
+    owner: root
+    group: root
+    mode: 0600
+
+- name: enable service
+  openwrt_init:
+    name: ddns
+    state: started
+    enabled: yes

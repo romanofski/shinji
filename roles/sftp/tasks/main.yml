@@ -1,0 +1,5 @@
+---
+- name: ensure SFTP is installed
+  package:
+    name: openssh-sftp-server
+    state: present

@@ -1,0 +1,17 @@
+---
+- name: Ensure ntpd is installed
+  package:
+    name: ntpd
+    state: present
+
+- name: Disable sysntpd
+  openwrt_init:
+    name: sysntpd
+    state: stopped
+    enabled: no
+
+- name: Enable NTP daemon
+  openwrt_init:
+    name: ntpd
+    state: started
+    enabled: yes

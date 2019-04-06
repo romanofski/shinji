@@ -1,0 +1,30 @@
+config znc
+        # where to listen for connections
+        list listener   '192.168.1.1 13667'
+
+{% for user, config in znc.users.items() %}
+config user '{{ user }}'
+        # Use either a plain text password or use the full sha256#... line.
+        # You can generate one with 'znc -s'.
+        option password '{{ config.password }}'
+        option nick     '{{ config.nick }}'
+        option altnick  '{{ config.altnick }}'
+        option ident    'user'
+        option realname '{{ config.realname }}'
+
+        # This adds support for channels in znc configuration:
+        {% for channel in config.channels %}
+list channel    '{{ channel }}'
+        {% endfor %}
+
+        # list of allowed servers:
+        {% for server in config.servers %}
+list server     '{{ server }}'
+        {% endfor %}
+
+        # load user modules ('<module> [params...]'):
+        # list module 'simple_away -timer 10 disconnected'
+        {% for module in config.modules %}
+list module '{{ module }}'
+        {% endfor %}
+{% endfor %}

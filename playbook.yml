@@ -1,0 +1,10 @@
+---
+- name: full deploy
+  hosts: openwrt
+  roles:
+    - { role: system }
+    - { role: time }
+    - { role: sftp }
+    - { role: adblock }
+    - { role: ddns }
+    - { role: znc }

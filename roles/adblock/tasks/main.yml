@@ -1,0 +1,31 @@
+---
+- name: Ensure adblock packages are installed
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - adblock
+    - luci-app-adblock
+    - wget
+
+- name: Ensure it is correctly configured
+  copy:
+    src: adblock
+    dest: /etc/config/adblock
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Ensure whitelist is enabled
+  copy:
+    src: adblock.whitelist
+    dest: /etc/adblock/adblock.whitelist
+    owner: root
+    group: root
+    mode: 600
+
+- name: Enable adblock service and start
+  openwrt_init:
+    state: restarted
+    enabled: yes
+    name: adblock

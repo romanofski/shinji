@@ -1,0 +1,69 @@
+---
+- name: Ensure local .ssh exists
+  file:
+    path: /root/.ssh
+    state: directory
+    mode: 0700
+    owner: root
+    group: root
+
+- name: Configure SSH key
+  copy:
+    src: "{{ ssh_user_key_path }}"
+    dest: /root/.ssh/authorized_keys
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Configure system
+  copy:
+    src: system
+    dest: /etc/config/system
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Ensure luci is installed
+  package:
+    name: luci
+    state: present
+
+- name: Configure luci
+  copy:
+    src: luci
+    dest: /etc/config/luci
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Configure network
+  template:
+    src: network.j2
+    dest: /etc/config/network
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Configure wireless
+  template:
+    src: wireless.j2
+    dest: /etc/config/wireless
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Configure DHCP
+  copy:
+    src: dhcp
+    dest: /etc/config/dhcp
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Configure firewall
+  copy:
+    src: firewall
+    dest: /etc/config/firewall
+    owner: root
+    group: root
+    mode: 0600
