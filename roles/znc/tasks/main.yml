@@ -19,5 +19,5 @@
 - name: enable service
   openwrt_init:
     name: znc
-    state: started
+    state: restarted
     enabled: yes
