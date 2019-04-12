@@ -52,14 +52,6 @@
     group: root
     mode: 0600
 
-- name: Configure DHCP
-  copy:
-    src: dhcp
-    dest: /etc/config/dhcp
-    owner: root
-    group: root
-    mode: 0600
-
 - name: Configure firewall
   copy:
     src: firewall
@@ -67,3 +59,17 @@
     owner: root
     group: root
     mode: 0600
+
+- name: Configure DHCP and DNS
+  copy:
+    src: dhcp
+    dest: /etc/config/dhcp
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Restart dnsmasq
+  openwrt_init:
+    name: dnsmasq
+    state: restarted
+    enabled: yes

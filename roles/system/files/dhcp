@@ -17,6 +17,31 @@ config dnsmasq
 	option localservice '1'
 	option serversfile '/tmp/adb_list.overall'
 
+config hostrecord
+	list name 'restrict.youtube.com'
+	list ip '216.239.38.120'
+	list ip '2001:4860:4802:32::78'
+
+config cname
+	option cname 'www.youtube.com'
+	option target 'restrict.youtube.com'
+
+config cname
+	option cname 'youtubei.googleapis.com'
+	option target 'restrict.youtube.com'
+
+config cname
+	option cname 'youtube-ui.l.google.com'
+	option target 'restrict.youtube.com'
+
+config cname
+	option cname 'youtube.googleapis.com'
+	option target 'restrict.youtube.com'
+
+config cname
+	option cname 'www.youtube-nocookie.com'
+	option target 'restrict.youtube.com'
+
 config dhcp 'lan'
 	option interface 'lan'
 	option start '100'

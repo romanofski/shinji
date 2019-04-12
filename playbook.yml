@@ -2,7 +2,7 @@
 - name: full deploy
   hosts: openwrt
   roles:
-    - { role: system }
+    - { role: system, tags: system }
     - { role: time }
     - { role: sftp }
     - { role: adblock }
