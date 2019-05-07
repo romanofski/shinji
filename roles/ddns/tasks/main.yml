@@ -17,5 +17,5 @@
 - name: enable service
   openwrt_init:
     name: ddns
-    state: started
+    state: restarted
     enabled: yes

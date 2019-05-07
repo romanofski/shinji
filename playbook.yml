@@ -6,5 +6,5 @@
     - { role: time }
     - { role: sftp }
     - { role: adblock }
-    - { role: ddns }
+    - { role: ddns, tags: ddns }
     - { role: znc }
