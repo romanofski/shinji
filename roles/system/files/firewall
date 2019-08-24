@@ -94,24 +94,6 @@ config rule
 	option proto 'udp'
 	option target 'ACCEPT'
 
-config rule
-	option target 'ACCEPT'
-	option src 'lan'
-	option name 'foo netflix'
-	option proto 'tcp'
-	option src_mac '00:34:DA:55:86:A7'
-	option dest 'wan'
-	option dest_port '443'
-	option enabled '0'
-
-config rule
-	option src 'lan'
-	option name 'foo'
-	option src_mac '00:34:DA:55:86:A7'
-	option dest 'wan'
-	option target 'DROP'
-	option enabled '0'
-
 config defaults
 	option syn_flood '1'
 	option input 'ACCEPT'
