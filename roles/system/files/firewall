@@ -141,17 +141,6 @@ config forwarding
 config include
 	option path '/etc/firewall.user'
 
-config redirect
-	option enabled '1'
-	option target 'DNAT'
-	option src 'wan'
-	option dest 'lan'
-	option proto 'tcp'
-	option src_dport '22'
-	option dest_ip '192.168.1.224'
-	option dest_port '22'
-	option name 'ssh'
-
 config zone
 	option name 'newzone'
 	option input 'ACCEPT'
