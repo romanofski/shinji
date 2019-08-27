@@ -136,7 +136,19 @@ config redirect
 	option src 'wan'
 	option dest 'lan'
 	option proto 'udp'
-	option src_dport '60000'
-	option dest_dport '60000'
+	option src_dport '60000-60010'
+	option dest_dport '60000-60010'
 	option dest_ip '192.168.1.224'
 	option name 'mosh'
+
+
+config redirect
+	option enabled '1'
+	option target 'DNAT'
+	option src 'wan'
+	option dest 'lan'
+	option proto 'tcp'
+	option src_dport '4'
+	option dest_dport '4'
+	option dest_ip '192.168.1.224'
+	option name 'ssh'
